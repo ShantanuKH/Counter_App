@@ -1,6 +1,9 @@
 part of 'counter_cubit.dart';
 
-@immutable
-sealed class CounterState {}
+class CounterState {
+  int counterValue;
 
-final class CounterInitial extends CounterState {}
+  CounterState({
+    required this.counterValue,
+  });
+}
