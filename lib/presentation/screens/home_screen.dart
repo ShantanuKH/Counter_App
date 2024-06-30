@@ -88,9 +88,12 @@ class _HomeScreenState extends State<HomeScreen> {
                  onPressed: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (context) => SecondScreen(
-                              title: 'SecondScreen', 
-                              color: Colors.blueAccent,
+                            builder: (_) => BlocProvider.value(value: BlocProvider.of<CounterCubit>(context),
+                            // BlocProvider.value(value: CounterCubit(),  this will provide the new state to the new screen but to keep the instance same we did this
+                              child: SecondScreen(
+                                title: 'SecondScreen', 
+                                color: Colors.blueAccent,
+                              ),
                             ),
                           ),
                         );
