@@ -83,24 +83,25 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 34,
                 ),
                 MaterialButton(
-                  hoverElevation: 5,
-                  color: widget.color,
-                 onPressed: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (_) => BlocProvider.value(value: BlocProvider.of<CounterCubit>(context),
-                            // BlocProvider.value(value: CounterCubit(),  this will provide the new state to the new screen but to keep the instance same we did this
-                              child: SecondScreen(
-                                title: 'SecondScreen', 
-                                color: Colors.blueAccent,
+                          hoverElevation: 5,
+                          color: widget.color,
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                  // BlocProvider.value(value: CounterCubit(),  this will provide the new state to the new screen but to keep the instance same we did this
+                                builder: (_) => BlocProvider.value(
+                                  value: BlocProvider.of<CounterCubit>(context),
+                                  child: SecondScreen(
+                                    title: 'SecondScreen', 
+                                    color: Colors.blueAccent,
+                                  ),
+                                ),
                               ),
-                            ),
-                          ),
-                        );
-},
+                            );
+                          },
+                          child: Text("Go to Second Page"),
+)
 
-                  child: Text("Go to Second Page"),
-                )
               ],
             ),
           ),
