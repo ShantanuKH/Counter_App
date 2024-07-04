@@ -18,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          backgroundColor: Colors.orange,
           title: Text(widget.title),
         ),
         body: BlocListener<CounterCubit, CounterState>(
@@ -83,8 +83,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 34,
                 ),
                 MaterialButton(
-                          hoverElevation: 5,
-                          color: widget.color,
+                          hoverElevation: 10,
+                          color: Colors.orange,
                           onPressed: () {
                             Navigator.of(context).push(
                               MaterialPageRoute(

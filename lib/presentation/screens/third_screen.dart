@@ -1,23 +1,30 @@
-import 'package:counter_app/business_logic/cubit/counter_cubit.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SecondScreen extends StatefulWidget {
-  const SecondScreen({super.key, required this.title,required this.color});
+import 'package:counter_app/business_logic/cubit/counter_cubit.dart';
+import 'package:counter_app/presentation/screens/second_screen.dart';
+
+class ThirdScreen extends StatefulWidget {
+  const ThirdScreen({
+    Key? key,
+    required this.title,
+    required this.color,
+  }) : super(key: key);
   final String title;
   final Color color;
 
   @override
-  _SecondScreenState createState() => _SecondScreenState();
+  _ThirdScreenState createState() => _ThirdScreenState();
 }
 
-class _SecondScreenState extends State<SecondScreen> {
+class _ThirdScreenState extends State<ThirdScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.lightBlueAccent,
+          backgroundColor: Colors.orange,
           title: Text(widget.title),
         ),
         body: BlocListener<CounterCubit, CounterState>(
@@ -77,15 +84,30 @@ class _SecondScreenState extends State<SecondScreen> {
                       child: Icon(Icons.add),
                     ),
                   ],
-                 
                 ),
-                 SizedBox(height: 34,),
+                SizedBox(
+                  height: 34,
+                ),
+                MaterialButton(
+                          hoverElevation: 10,
+                          color: Colors.orange,
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                  // BlocProvider.value(value: CounterCubit(),  this will provide the new state to the new screen but to keep the instance same we did this
+                                builder: (_) => BlocProvider.value(
+                                  value: BlocProvider.of<CounterCubit>(context),
+                                  child: SecondScreen(
+                                    title: 'SecondScreen', 
+                                    color: Colors.blueAccent,
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                          child: Text("Go to Second Page"),
+)
 
-                 MaterialButton(
-                  hoverElevation: 5,
-                  color: Colors.lightBlueAccent,
-                  onPressed: (){},
-                 child: Text("Go to third Page"),)
               ],
             ),
           ),
