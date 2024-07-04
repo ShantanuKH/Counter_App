@@ -1,9 +1,10 @@
 import 'package:counter_app/business_logic/cubit/counter_cubit.dart';
+import 'package:counter_app/presentation/screens/third_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SecondScreen extends StatefulWidget {
-  const SecondScreen({super.key, required this.title,required this.color});
+  const SecondScreen({super.key, required this.title, required this.color});
   final String title;
   final Color color;
 
@@ -77,15 +78,29 @@ class _SecondScreenState extends State<SecondScreen> {
                       child: Icon(Icons.add),
                     ),
                   ],
-                 
                 ),
-                 SizedBox(height: 34,),
-
-                 MaterialButton(
-                  hoverElevation: 5,
-                  color: Colors.lightBlueAccent,
-                  onPressed: (){},
-                 child: Text("Go to third Page"),)
+                SizedBox(
+                  height: 34,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => BlocProvider.value(
+                                  value: BlocProvider.of(context),
+                                  child: ThirdScreen(
+                                      title: "Third Screen",
+                                      color: Colors.green),
+                                )));
+                  },
+                  child: MaterialButton(
+                    hoverElevation: 5,
+                    color: Colors.lightBlueAccent,
+                    onPressed: () {},
+                    child: Text("Go to third Screen"),
+                  ),
+                )
               ],
             ),
           ),

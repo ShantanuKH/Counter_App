@@ -24,7 +24,7 @@ class _ThirdScreenState extends State<ThirdScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.orange,
+          backgroundColor: Colors.green,
           title: Text(widget.title),
         ),
         body: BlocListener<CounterCubit, CounterState>(
@@ -90,7 +90,7 @@ class _ThirdScreenState extends State<ThirdScreen> {
                 ),
                 MaterialButton(
                           hoverElevation: 10,
-                          color: Colors.orange,
+                          color: Colors.green,
                           onPressed: () {
                             Navigator.of(context).push(
                               MaterialPageRoute(
@@ -99,13 +99,13 @@ class _ThirdScreenState extends State<ThirdScreen> {
                                   value: BlocProvider.of<CounterCubit>(context),
                                   child: SecondScreen(
                                     title: 'SecondScreen', 
-                                    color: Colors.blueAccent,
+                                    color: Colors.green,
                                   ),
                                 ),
                               ),
                             );
                           },
-                          child: Text("Go to Second Page"),
+                          child: Text("Go to Second Screen"),
 )
 
               ],
